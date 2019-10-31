@@ -5,15 +5,52 @@
 	<script>
 		// TODO: create a handler
     window.addEventListener("load", function(){
-        // TODO: register the handler
+	let submitButtonVar = document.getElementById("submitButton");
+	submitButtonVar.addEventListener("click", setSearchEngine);
     });
+
+	//function that will set the action attribute on form to particular site
+	function setSearchEngine(){
+		let selector = document.querySelector("input[name=engine]:checked").value;
+
+	
+		 let actions = {
+			"google": "https://www.google.com/search",
+			"duckDuckGo": "https://duckduckgo.com/",
+			"bing": "https://www.bing.com/search",
+			"ask": "https://www.ask.com/web"
+
+		};
+		document.getElementById("searchForm").action = actions[selector];
+		
+		// messy if else statement that works though
+		// if (selector == "google"){
+		// 	document.getElementById("searchForm").action = "https://www.google.com/search";
+		// } else if (selector == "duckDuckGo"){
+		// 	document.getElementById("searchForm").action = "https://duckduckgo.com/";
+		// } else if (selector == "bing"){
+		// 	document.getElementById("searchForm").action = "https://www.bing.com/search";
+		// }else if (selector == "ask"){
+		// 	document.getElementById("searchForm").action = "https://www.ask.com/web";
+		// }
+	}
 	</script>
 </head>
 
 <body>
 
-	<form id="searchForm">
-    <!-- TODO: add form elements -->
+	<form id="searchForm" action="">
+	<!-- TODO: add form elements -->
+	<!-- Text input search bar-->
+	<input type="text" name="q"/>
+	
+	<!--Radio & submit button group-->
+	<label>Google<input type="radio" name="engine" value="google"</label>
+	<label>DuckDuckGo<input type="radio" name="engine" value="duckDuckGo"</label>
+	<label>Bing<input type="radio" name="engine" value="bing"</label>
+	<label>Ask<input type="radio" name="engine" value="ask"</label>
+	<button id="submitButton">Go!</button>
+
 	</form>
 
 </body>
